@@ -27,11 +27,11 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
- * 
+ * count is outside the function in  code 2
  * 2. Which of the two uses a closure? How can you tell?
- * 
+ *  first one becuase the inner function uses the outer function's variable 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ * 1 if count wasn't called anywgere else in the code and 2 if you need to use count again
 */
 
 // counter1 code
@@ -56,12 +56,12 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
+function inning(max){
 
-    /*Code Here*/
+    console.log(Math.floor(Math.random() * Math.floor(max)))
 
 }
-
+// inning(3)
 /* Task 3: finalScore()
 
 Write a higher order function called `finalScore` that accepts the callback function `inning` (from above) and a number of innings and and returns the final score of the game in the form of an object.
@@ -76,12 +76,21 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
+function finalScore(inning, inningNum){
+let homeScore = 0;
+let awayScore = 0;
 
-  /*Code Here*/
-
+for (i = 0; i < inningNum-1; i++){
+  homeScore += inning;
+  awayScore += inning;
+}
+return{
+  Home: homeScore,
+  Away: awayScore,
 }
 
+}
+finalScore(inning(), 9)
 /* Task 4: 
 
 Create a function called `scoreboard` that accepts the following parameters: 
@@ -102,9 +111,23 @@ and returns the score at each pont in the game, like so:
 9th inning: 6 - 10
 
 Final Score: 6 - 10 */
+let inningArray=[1,2,3,4,5,6,7,8,9];
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(callback, inningnum)
+{
+let scoreByInning = [];
+
+inningnum.forEach(
+  (value, index)=>{
+    console.log(`Value per loop: ${Value}, Index per loop: ${index}`)
+    let awayTeamScore= callback*value;
+    let homeTeamScore= callback*inningNum[index];
+    scoreByInning.push(`${inningNum[index]} inning: ${homeTeamScore} - ${awayTeamScore}`);
+  }
+)
+
+return scoreByInning;
 }
+console.log(scoreboard(inning(), inningArray));
 
 
