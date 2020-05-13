@@ -9,8 +9,9 @@ The module challenge is the afternoon project or assignment that students work t
 ## Objectives
 
 - Explain function scope
+accessibility of a variable in a function
 - Describe what closure is, how closure is created in a program and why it is important to understand closures in JavaScript  
-
+closure is a feature where a inner function has access to the outer enclosing function's variables. It's created when a function can access another function's variable. it's importent so we don't have to reuse variables 
 ## Introduction
 
 This challenge focuses on both scope and closures.
